@@ -2,7 +2,32 @@ import React, {Component} from 'react';
 import {Image, Text, View} from 'react-native';
 
 class Flexbox extends Component {
+  // Proses Mounting
+  constructor(props) {
+    super(props);
+    console.log('===> Constructor');
+    this.state = {subscriber: 100};
+  }
+
+  componentDidMount() {
+    console.log('===> Component Did Mount');
+    setTimeout(() => {
+      this.setState({
+        subscriber: 500,
+      });
+    }, 2000);
+  }
+
+  componentDidUpdate() {
+    console.log('===> Component Did Update');
+  }
+
+  componentWillUnmount() {
+    console.log('===> Component Will Unmount');
+  }
+
   render() {
+    console.log('===> Render');
     return (
       <View>
         <Text
@@ -76,7 +101,9 @@ class Flexbox extends Component {
             <Text style={{fontSize: 20, fontWeight: 'bold'}}>
               Deddy Corbuzier
             </Text>
-            <Text style={{fontSize: 13}}>14.5M Subscribers</Text>
+            <Text style={{fontSize: 13}}>
+              {this.state.subscriber} Subscribers
+            </Text>
           </View>
         </View>
       </View>

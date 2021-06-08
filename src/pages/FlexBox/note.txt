@@ -1,0 +1,19 @@
+=========SIKLUS HIDUP CLASS COMPONENT=========
+
+1. Mounting     = Ketika muncul
+   Mempunyai method atau fungsi, yaitu:
+   -. Constructor
+   -. Render
+   -. componentDidMount
+2. Update       = Ketika komponen berubah
+   Mempunyai method atau fungsi, yaitu:
+   -. getDerivedStateFromProps (jarang digunakan)
+   -. shouldComponentUpdate    (jarang digunakan)
+   -. Render                   (WAJIB)
+   -. getSnapshotBeforeUpdate  (jarang digunakan)
+   -. componentDidUpdate       (WAJIB)
+3. Unmounting   = Ketika komponen hilang
+   -. Unmounting
+
+NOTE:
+- Materi Bagian: React Native Basic (BuildWithAngga)
