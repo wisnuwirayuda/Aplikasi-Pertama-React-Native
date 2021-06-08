@@ -9,9 +9,9 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import StylingReactNativeComponent from './StylingReactNativeComponent';
-import SampleComponent from './SampleComponent';
-import MateriFlexBox from './MateriFlexBox';
+import StylingComponent from './pages/StylingComponent';
+import SampleComponent from './pages/SampleComponent';
+import FlexBox from './pages/FlexBox';
 
 // Arrow Function
 const App = () => {
@@ -19,8 +19,8 @@ const App = () => {
     <View>
       <ScrollView>
         <SampleComponent></SampleComponent>
-        <StylingReactNativeComponent></StylingReactNativeComponent>
-        <MateriFlexBox></MateriFlexBox>
+        <StylingComponent></StylingComponent>
+        <FlexBox></FlexBox>
       </ScrollView>
     </View>
   );
