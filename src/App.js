@@ -4,6 +4,7 @@ import StylingComponent from './pages/StylingComponent';
 import SampleComponent from './pages/SampleComponent';
 import FlexBox from './pages/FlexBox';
 import PropsDinamis from './pages/PropsDinamis';
+import StateDinamis from './pages/StateDinamis';
 
 // Arrow Function
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
         {/* <SampleComponent></SampleComponent>
         <StylingComponent></StylingComponent>
         <FlexBox /> */}
-        <PropsDinamis></PropsDinamis>
+        {/* <PropsDinamis></PropsDinamis> */}
+        <StateDinamis></StateDinamis>
       </ScrollView>
     </View>
   );
