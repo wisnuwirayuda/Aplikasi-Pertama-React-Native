@@ -3,10 +3,11 @@ import {View, ScrollView} from 'react-native';
 import StylingComponent from './pages/StylingComponent';
 import SampleComponent from './pages/SampleComponent';
 import FlexBox from './pages/FlexBox';
+import PropsDinamis from './pages/PropsDinamis';
 
 // Arrow Function
 const App = () => {
-  const [isShow, SetIsShow] = useState(true);
+  // const [isShow, SetIsShow] = useState(true);
   // useEffect(() => {
   //   setTimeout(() => {
   //     SetIsShow(false);
@@ -17,8 +18,9 @@ const App = () => {
     <View>
       <ScrollView>
         {/* <SampleComponent></SampleComponent>
-        <StylingComponent></StylingComponent> */}
-        {isShow && <FlexBox />}
+        <StylingComponent></StylingComponent>
+        <FlexBox /> */}
+        <PropsDinamis></PropsDinamis>
       </ScrollView>
     </View>
   );
