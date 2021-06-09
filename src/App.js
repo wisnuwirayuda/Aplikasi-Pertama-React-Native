@@ -7,11 +7,11 @@ import FlexBox from './pages/FlexBox';
 // Arrow Function
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      SetIsShow(false);
-    }, 6000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     SetIsShow(false);
+  //   }, 6000);
+  // }, []);
 
   return (
     <View>

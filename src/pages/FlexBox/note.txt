@@ -15,5 +15,27 @@
 3. Unmounting   = Ketika komponen hilang
    -. Unmounting
 
+=========SIKLUS HIDUP FUNCTIONAL COMPONENT=========
+
+Mempunyai 1 method yang dapat menampung siklus hidup mounting, update, unmounting yaitu: useEffect(() => {}, []);
+
+1. Mounting       = Ketika komponen muncul
+   Contoh:
+   useEffect(() => {
+     console.log('did mount');
+   }, []);
+
+2. Update         = Ketika komponen berubah
+   Contoh:
+   useEffect(() => {
+      console.log('did update');
+   }, [diisi dengan variabel apa yang ingin dibaca]);
+
+3. Unmounting     = Ketika komponen hilang
+   Contoh:
+   useEffect(() => {
+     console.log('did unmounting');
+   }, []);
+
 NOTE:
 - Materi Bagian: React Native Basic (BuildWithAngga)
