@@ -7,6 +7,7 @@ import Position from './pages/Position';
 import PropsDinamis from './pages/PropsDinamis';
 import StateDinamis from './pages/StateDinamis';
 import Communication from './pages/Communication';
+import BasicJavascript from './pages/BasicJavascript';
 
 // Arrow Function
 const App = () => {
@@ -26,7 +27,8 @@ const App = () => {
         {/* <PropsDinamis></PropsDinamis> */}
         {/* <StateDinamis></StateDinamis> */}
         {/* <Position></Position> */}
-        <Communication></Communication>
+        {/* <Communication></Communication> */}
+        <BasicJavascript></BasicJavascript>
       </ScrollView>
     </View>
   );
