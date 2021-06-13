@@ -1,0 +1,16 @@
+Untuk pemanggilan API dengan Vanilla JS dapat menggunakan method fetch, seperti berikut: 
+
+- Method GET
+    fetch('masukkan link API')
+        .then(response => response.json())
+        .then(json => console.log(json))
+
+- Method POST, PUT, DELETE
+    fetch('masukkan link API', {
+        method: 'masukkan method',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(masukkan variabel) // harus berupa string
+    }).then(response => response.json())
+        .then(json => console.log(json))
