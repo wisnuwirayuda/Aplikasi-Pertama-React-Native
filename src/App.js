@@ -10,6 +10,7 @@ import Communication from './pages/Communication';
 import BasicJavascript from './pages/BasicJavascript';
 import CallAPIVanilla from './pages/CallAPIVanilla';
 import CallAPIAxios from './pages/CallAPIAxios';
+import LocalAPI from './pages/LocalAPI';
 
 // Arrow Function
 const App = () => {
@@ -32,7 +33,8 @@ const App = () => {
         {/* <Communication></Communication> */}
         {/* <BasicJavascript></BasicJavascript> */}
         {/* <CallAPIVanilla></CallAPIVanilla> */}
-        <CallAPIAxios></CallAPIAxios>
+        {/* <CallAPIAxios></CallAPIAxios> */}
+        <LocalAPI></LocalAPI>
       </ScrollView>
     </View>
   );
