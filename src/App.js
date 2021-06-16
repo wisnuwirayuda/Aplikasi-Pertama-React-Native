@@ -9,6 +9,7 @@ import StateDinamis from './pages/StateDinamis';
 import Communication from './pages/Communication';
 import BasicJavascript from './pages/BasicJavascript';
 import CallAPIVanilla from './pages/CallAPIVanilla';
+import CallAPIAxios from './pages/CallAPIAxios';
 
 // Arrow Function
 const App = () => {
@@ -30,7 +31,8 @@ const App = () => {
         {/* <Position></Position> */}
         {/* <Communication></Communication> */}
         {/* <BasicJavascript></BasicJavascript> */}
-        <CallAPIVanilla></CallAPIVanilla>
+        {/* <CallAPIVanilla></CallAPIVanilla> */}
+        <CallAPIAxios></CallAPIAxios>
       </ScrollView>
     </View>
   );
