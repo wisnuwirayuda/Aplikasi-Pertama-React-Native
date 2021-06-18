@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Button, Text, View, TextInput, Image} from 'react-native';
 
-const Item = () => {
+const Item = ({name, email, jurusan}) => {
   return (
     <View style={styles.itemContainer}>
       <Image
@@ -12,9 +12,9 @@ const Item = () => {
         }}
         style={styles.avatar}></Image>
       <View style={styles.desc}>
-        <Text style={styles.descName}>Nama Lengkap</Text>
-        <Text style={styles.descEmail}>Email</Text>
-        <Text style={styles.descJurusan}>Jurusan</Text>
+        <Text style={styles.descName}>{name}</Text>
+        <Text style={styles.descEmail}>{email}</Text>
+        <Text style={styles.descJurusan}>{jurusan}</Text>
       </View>
       <Text style={styles.delete}>X</Text>
     </View>
@@ -25,7 +25,13 @@ const LocalAPI = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [jurusan, setJurusan] = useState('');
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Create
   const submit = () => {
     const data = {
       name,
@@ -40,8 +46,17 @@ const LocalAPI = () => {
         setName('');
         setEmail('');
         setJurusan('');
+        getData();
       })
       .catch(err => console.log('err: ', err));
+  };
+
+  // Read
+  const getData = () => {
+    axios.get('http://10.0.2.2:3000/users').then(response => {
+      console.log('result get data: ', response);
+      setUsers(response.data);
+    });
   };
 
   return (
@@ -65,7 +80,15 @@ const LocalAPI = () => {
         onChangeText={value => setJurusan(value)}></TextInput>
       <Button title="Simpan" onPress={submit}></Button>
       <View style={styles.line}></View>
-      <Item />
+      {users.map(user => {
+        return (
+          <Item
+            key={user.id}
+            name={user.name}
+            email={user.email}
+            jurusan={user.jurusan}></Item>
+        );
+      })}
     </View>
   );
 };
