@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "Wisnu",
-      "email": "wisnu@gmail.com",
-      "jurusan": "Teknik Informatika"
+      "email": "wisnu.wirayuda01@gmail.com",
+      "jurusan": "Teknik Informatika",
+      "id": 1
     },
     {
       "name": "Bagus",

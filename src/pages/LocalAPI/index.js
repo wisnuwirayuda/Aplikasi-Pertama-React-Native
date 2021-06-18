@@ -1,16 +1,26 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Button, Text, View, TextInput, Image} from 'react-native';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Button,
+  Text,
+  View,
+  TextInput,
+  Image,
+} from 'react-native';
 
-const Item = ({name, email, jurusan}) => {
+const Item = ({name, email, jurusan, onPress}) => {
   return (
     <View style={styles.itemContainer}>
-      <Image
-        source={{
-          uri:
-            'https://robohash.org/03dbad4d0c2a750186ceacd65022a9ff?set=set2&bgset=bg2&size=200x200',
-        }}
-        style={styles.avatar}></Image>
+      <TouchableOpacity onPress={onPress}>
+        <Image
+          source={{
+            uri:
+              'https://robohash.org/03dbad4d0c2a750186ceacd65022a9ff?set=set2&bgset=bg2&size=200x200',
+          }}
+          style={styles.avatar}></Image>
+      </TouchableOpacity>
       <View style={styles.desc}>
         <Text style={styles.descName}>{name}</Text>
         <Text style={styles.descEmail}>{email}</Text>
@@ -25,7 +35,9 @@ const LocalAPI = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [jurusan, setJurusan] = useState('');
+  const [button, setButton] = useState('Simpan');
   const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
 
   useEffect(() => {
     getData();
@@ -39,24 +51,48 @@ const LocalAPI = () => {
       jurusan,
     };
     // console.log('Data before send: ', data);
-    axios
-      .post('http://10.0.2.2:3000/users', data) // ip 10.0.2.2 adalah ip aliases dari sebuah emulator
-      .then(result => {
-        console.log('result: ', result);
-        setName('');
-        setEmail('');
-        setJurusan('');
-        getData();
-      })
-      .catch(err => console.log('err: ', err));
+
+    if (button === 'Simpan') {
+      axios
+        .post('http://10.0.2.2:3000/users', data) // ip 10.0.2.2 adalah ip aliases dari sebuah emulator
+        .then(result => {
+          // console.log('result: ', result);
+          setName('');
+          setEmail('');
+          setJurusan('');
+          getData();
+        })
+        .catch(err => console.log('err: ', err));
+    } else if (button === 'Update') {
+      axios
+        .put(`http://10.0.2.2:3000/users/${selectedUser.id}`, data)
+        .then(result => {
+          console.log('Update Data: '), result;
+          setName('');
+          setEmail('');
+          setJurusan('');
+          setButton('Simpan');
+          getData();
+        });
+    }
   };
 
   // Read
   const getData = () => {
     axios.get('http://10.0.2.2:3000/users').then(response => {
-      console.log('result get data: ', response);
+      // console.log('result get data: ', response);
       setUsers(response.data);
     });
+  };
+
+  // Update
+  const updateData = item => {
+    // console.log('Update Data: ', item);
+    setSelectedUser(item);
+    setName(item.name);
+    setEmail(item.email);
+    setJurusan(item.jurusan);
+    setButton('Update');
   };
 
   return (
@@ -78,7 +114,7 @@ const LocalAPI = () => {
         style={styles.input}
         value={jurusan}
         onChangeText={value => setJurusan(value)}></TextInput>
-      <Button title="Simpan" onPress={submit}></Button>
+      <Button title={button} onPress={submit}></Button>
       <View style={styles.line}></View>
       {users.map(user => {
         return (
@@ -86,7 +122,8 @@ const LocalAPI = () => {
             key={user.id}
             name={user.name}
             email={user.email}
-            jurusan={user.jurusan}></Item>
+            jurusan={user.jurusan}
+            onPress={() => updateData(user)}></Item>
         );
       })}
     </View>
