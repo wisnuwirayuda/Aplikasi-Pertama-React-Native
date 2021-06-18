@@ -8,9 +8,10 @@ import {
   View,
   TextInput,
   Image,
+  Alert,
 } from 'react-native';
 
-const Item = ({name, email, jurusan, onPress}) => {
+const Item = ({name, email, jurusan, onPress, onDelete}) => {
   return (
     <View style={styles.itemContainer}>
       <TouchableOpacity onPress={onPress}>
@@ -26,7 +27,9 @@ const Item = ({name, email, jurusan, onPress}) => {
         <Text style={styles.descEmail}>{email}</Text>
         <Text style={styles.descJurusan}>{jurusan}</Text>
       </View>
-      <Text style={styles.delete}>X</Text>
+      <TouchableOpacity onPress={onDelete}>
+        <Text style={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -95,6 +98,15 @@ const LocalAPI = () => {
     setButton('Update');
   };
 
+  // Delete
+  const deleteData = item => {
+    // console.log('delete data: ', item);
+    axios
+      .delete(`http://10.0.2.2:3000/users/${item.id}`)
+      .then(result => console.log('Delete data: ', result));
+    getData();
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API (JSON Server)</Text>
@@ -123,7 +135,13 @@ const LocalAPI = () => {
             name={user.name}
             email={user.email}
             jurusan={user.jurusan}
-            onPress={() => updateData(user)}></Item>
+            onPress={() => updateData(user)}
+            onDelete={() =>
+              Alert.alert('Peringatan', 'Yakin?', [
+                {text: 'Tidak', onPress: () => console.log('Button Tidak')},
+                {text: 'Ya', onPress: () => deleteData(user)},
+              ])
+            }></Item>
         );
       })}
     </View>

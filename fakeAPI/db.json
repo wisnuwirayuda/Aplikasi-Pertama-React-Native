@@ -11,18 +11,6 @@
       "email": "bagus@gmail.com",
       "jurusan": "Teknik Sipil",
       "id": 2
-    },
-    {
-      "name": "Pandu",
-      "email": "pandu@gmail.com",
-      "jurusan": "Teknik Industri",
-      "id": 3
-    },
-    {
-      "name": "Gading",
-      "email": "gading@gmail.com",
-      "jurusan": "Psikologi",
-      "id": 4
     }
   ]
 }
