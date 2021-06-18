@@ -1,24 +1,16 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Wisnu",
+      "email": "wisnu@gmail.com",
+      "jurusan": "Teknik Informatika"
     },
     {
-      "title": "CodeIgniter",
-      "author": "wisnu",
+      "name": "bagus sadewo",
+      "email": "bagus@gmail.com",
+      "jurusan": "Teknik Sipil",
       "id": 2
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

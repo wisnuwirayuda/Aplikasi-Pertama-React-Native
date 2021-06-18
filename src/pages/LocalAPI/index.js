@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import {StyleSheet, Button, Text, View, TextInput, Image} from 'react-native';
 
 const Item = () => {
@@ -21,14 +22,48 @@ const Item = () => {
 };
 
 const LocalAPI = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [jurusan, setJurusan] = useState('');
+
+  const submit = () => {
+    const data = {
+      name,
+      email,
+      jurusan,
+    };
+    // console.log('Data before send: ', data);
+    axios
+      .post('http://10.0.2.2:3000/users', data) // ip 10.0.2.2 adalah ip aliases dari sebuah emulator
+      .then(result => {
+        console.log('result: ', result);
+        setName('');
+        setEmail('');
+        setJurusan('');
+      })
+      .catch(err => console.log('err: ', err));
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API (JSON Server)</Text>
       <Text>Masukkan Data Mahasiswa</Text>
-      <TextInput placeholder="Nama Lengkap" style={styles.input}></TextInput>
-      <TextInput placeholder="Email" style={styles.input}></TextInput>
-      <TextInput placeholder="Jurusan" style={styles.input}></TextInput>
-      <Button title="Simpan"></Button>
+      <TextInput
+        placeholder="Nama Lengkap"
+        style={styles.input}
+        value={name}
+        onChangeText={value => setName(value)}></TextInput>
+      <TextInput
+        placeholder="Email"
+        style={styles.input}
+        value={email}
+        onChangeText={value => setEmail(value)}></TextInput>
+      <TextInput
+        placeholder="Jurusan"
+        style={styles.input}
+        value={jurusan}
+        onChangeText={value => setJurusan(value)}></TextInput>
+      <Button title="Simpan" onPress={submit}></Button>
       <View style={styles.line}></View>
       <Item />
     </View>
